@@ -1,16 +1,27 @@
 import mysql2 from 'mysql2';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const pool = mysql2.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: '123456',
-    database: 'hopeconnect'
+    host: process.env.DB_HOST || 'localhost',
+    user: process.env.DB_USER || 'root',
+    password: process.env.DB_PASSWORD || '123456',
+    database: process.env.DB_NAME || 'hopeconnect'
 }).promise();
 
+async function testConnection() {
+    try {
+        const connection = await pool.getConnection();
+        console.log('Connection has been established successfully.');
+        connection.release(); //  back to pool
+    } catch (error) {
+        console.error('Unable to connect on the database:', error);
+    }
+}
 
-// const qry = await pool.query('SELECT * FROM orphan');
-// console.log(qry[0]);
+testConnection();
+
+export default pool;
 
 
-
-export default await pool;
