@@ -1,15 +1,15 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import orphanRoutes from './src/routes/orphanRoutes.js';
-import userRoutes from './src/routes/userRoutes.js';
-import donationRoutes from './src/routes/donationRoutes.js';
+import orphanRoutes from './routes/orphanRoutes.js';
+import userRoutes from './routes/userRoutes.js';
+import donationRoutes from './routes/donationRoutes.js'; 
 
-dotenv.config(); 
+dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-// middleware
+// Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
