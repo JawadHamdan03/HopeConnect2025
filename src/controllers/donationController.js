@@ -1,6 +1,6 @@
 import pool from '../config/database.js';
 
-exports.createSponsorship = async (req, res) => {
+export const createSponsorship = async (req, res) => {
     try {
         const { sponsor_id, orphan_id, payment_method_id, amount, start_date, end_date, status, frequency, next_payment_date, notes } = req.body;
 
@@ -17,8 +17,7 @@ exports.createSponsorship = async (req, res) => {
     }
 };
 
-// Get all sponsorships
-exports.getAllSponsorships = async (req, res) => {
+export const getAllSponsorships = async (req, res) => {
     try {
         const { page = 1, pageSize = 10 } = req.query;
         const limit = parseInt(pageSize, 10);
@@ -53,8 +52,7 @@ exports.getAllSponsorships = async (req, res) => {
     }
 };
 
-// Get a single sponsorship by ID
-exports.getSponsorshipById = async (req, res) => {
+export const getSponsorshipById = async (req, res) => {
     try {
         const { id } = req.params;
 
@@ -79,8 +77,7 @@ exports.getSponsorshipById = async (req, res) => {
     }
 };
 
-// Update a sponsorship
-exports.updateSponsorship = async (req, res) => {
+export const updateSponsorship = async (req, res) => {
     try {
         const { id } = req.params;
         const { sponsor_id, orphan_id, payment_method_id, amount, start_date, end_date, status, frequency, next_payment_date, notes } = req.body;
@@ -109,8 +106,7 @@ exports.updateSponsorship = async (req, res) => {
     }
 };
 
-// Delete a sponsorship
-exports.deleteSponsorship = async (req, res) => {
+export const deleteSponsorship = async (req, res) => {
     try {
         const { id } = req.params;
         const [result] = await pool.query('DELETE FROM sponsorship WHERE id = ?', [id]);

@@ -1,14 +1,12 @@
-import { createDonation, getAllDonations, getDonationById, updateDonation, deleteDonation } from '../controllers/donationController.js'; 
 import express from 'express';
+const router = express.Router();
+import * as donationController from '../controllers/donationController.js';
 import authMiddleware from '../middlewares/authMiddleware.js';
 
-const router = express.Router();
+router.post('/', authMiddleware(['donor', 'admin']), donationController.createSponsorship);
+router.get('/',  donationController.getAllSponsorships);
+router.get('/:id',  donationController.getSponsorshipById);
+router.put('/:id', authMiddleware(['admin']), donationController.updateSponsorship);
+router.delete('/:id', authMiddleware(['admin']), donationController.deleteSponsorship);
 
-
-router.post('/donations', authMiddleware(['admin']), createDonation); // create 
-router.get('/donations', authMiddleware(['admin', 'user']), getAllDonations); // get all donation
-router.get('/donations/:id', authMiddleware(['admin', 'user']), getDonationById); // get donation by ID
-router.put('/donations/:id', authMiddleware(['admin']), updateDonation); // update donation
-router.delete('/donations/:id', authMiddleware(['admin']), deleteDonation); // delete donation
-
-export default router; 
+export default router;
