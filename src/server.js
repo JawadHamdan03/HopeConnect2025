@@ -3,6 +3,7 @@ import orphans from "./routes/orphanRoutes.js";
 import users from "./routes/userRoutes.js";
 import donation from "./routes/donationRoutes.js";
 import reviews from "./routes/reviewRoutes.js";
+import donationTracking from "./routes/donationTrackingRoutes.js";
 
 
 const app = express();
@@ -24,6 +25,8 @@ app.use("/api/users", users);
 app.use("/api/donations",donation);
 
 app.use("/api/reviews", reviews);
+
+app.use("/api/donation-tracking", donationTracking);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
