@@ -71,6 +71,7 @@ CREATE TABLE orphan (
 );
 
 CREATE TABLE sponsorship (
+    
     id INT AUTO_INCREMENT PRIMARY KEY,
     sponsor_id INT NOT NULL,
     orphan_id INT NOT NULL,
