@@ -1,10 +1,13 @@
 import express from "express";
-import { addDonationTracking, getDonationTracking } from "../Controllers/donationTrackingController.js";
+import { getAllDonationTracking,addDonationTracking, getDonationTracking ,updateDonationTracking ,deleteDonationTracking  } from "../Controllers/donationTrackingController.js";
 import authMiddleware from "../middlewares/authMiddleware.js";
 
 const router = express.Router();
 
-router.post("/", authMiddleware(["admin"]), addDonationTracking);
+router.post("/", addDonationTracking);
 router.get("/:donationId", getDonationTracking);
+router.get("/", getAllDonationTracking);
+router.put("/:donationId", updateDonationTracking);
+router.delete("/:donationId", deleteDonationTracking);
 
 export default router;

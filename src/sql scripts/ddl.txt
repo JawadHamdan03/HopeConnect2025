@@ -102,6 +102,8 @@ CREATE TABLE donation_tracking (
     FOREIGN KEY (orphan_id) REFERENCES orphan(id) ON DELETE SET NULL,
     FOREIGN KEY (orphanage_id) REFERENCES orphanage(id) ON DELETE SET NULL
 );
+ALTER TABLE donation_tracking ADD COLUMN description TEXT;
+ALTER TABLE donation_tracking ADD COLUMN status ENUM('completed', 'in progress', 'pending');
 
 CREATE TABLE reviews (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -125,8 +127,7 @@ CREATE TABLE activity_log (
 ALTER TABLE orphanage ADD COLUMN verified BOOLEAN DEFAULT FALSE;
 ALTER TABLE user ADD COLUMN total_donated DECIMAL(10,2) DEFAULT 0.00;
 
-ALTER TABLE donation_tracking ADD COLUMN description TEXT;
-ALTER TABLE donation_tracking ADD COLUMN status ENUM('completed', 'in progress', 'pending');
+
 
 
 
