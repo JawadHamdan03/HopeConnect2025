@@ -118,6 +118,6 @@ export const deleteSponsorship = async (req, res) => {
         res.status(204).send();
     } catch (error) {
         console.error('Error deleting sponsorship:', error);
-        res.status(500).json({ message: 'Failed to delete sponsorship', error: error.message });
+        res.status(500).json({ message: 'internal server error', error: error.message });
     }
 };
