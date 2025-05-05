@@ -21,7 +21,6 @@ app.use('/api/orphans', orphanRoutes);
 app.use('/api/donations', donationRoutes);
 app.use('/api/users', userRoutes);
 
-<<<<<<< Updated upstream
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 
